@@ -1,0 +1,101 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+a{
+	text-decoration: none;
+	color: inherit;
+}
+
+body{
+	width: 100%;
+	background: darkslategrey;
+}
+
+li{
+	list-style: none;
+	float: left;
+	position: relative;
+}
+
+#container{
+	height: 760px;
+    width: 920px;
+    margin: 4% auto 0 auto;
+    border: 7px solid white;
+}
+
+#banner{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+#pic li{
+	float: left;
+	position: relative;
+}
+
+#trig{
+	position: absolute;
+	bottom: 12px;
+    right: 392px;
+}
+
+#trig li{
+    height: 10px;
+    width: 10px;
+    background-color: white;
+    border-radius: 7px;
+    margin: 0 0 0 17px;
+}
+
+
+#pic{
+    width: 500%;
+    margin-left: 0%;
+    transition: 1.5s;
+}
+
+.point{
+    position: absolute;
+    font-size: 105px;
+	color: white;
+    opacity: 0.7;
+    top: 300px;
+    font-family: serif;
+    transition: 1s;
+}
+
+.point:hover{
+	transition: 1s;
+	opacity: 1;
+}
+
+#left{
+	left: 21px; 
+}
+
+#right{
+    right: 21px;	
+}
+
+#trig .firstDot{
+	background-color: #454641;
+}
+
+#explain{
+    color: white;
+    font-size: 18px;
+    width: 500px;
+    margin: auto;
+    margin-top: 22px;
+}
+
+#explain p{
+	font-family: "华文中宋","微软雅黑";
+    text-align: center;
+    border: 1.5px solid white;
+}

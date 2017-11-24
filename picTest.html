@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<title>图片轮播</title>
+</head>
+<body>
+	<div id="container">
+		<div id="banner">
+			<ul id="pic">
+				<li><img src="images/1.jpg"></li>
+				<li><img src="images/2.jpg"></li>
+				<li><img src="images/3.jpg"></li>
+				<li><img src="images/4.jpg"></li>
+				<li><img src="images/5.jpg"></li>
+			</ul>
+			<ul id="trig">
+				<a href="#" onclick="return false"><li onclick="dotCilck(0)" class="dot firstDot"></li></a>
+				<a href="#" onclick="return false"><li onclick="dotCilck(1)" class="dot"></li></a>
+				<a href="#" onclick="return false"><li onclick="dotCilck(2)" class="dot"></li></a>
+				<a href="#" onclick="return false"><li onclick="dotCilck(3)" class="dot"></li></a>
+				<a href="#" onclick="return false"><li onclick="dotCilck(4)" class="dot"></li></a>
+			</ul>
+			<div id="points">
+				<div><a href="#" onclick="return false"><p id="left" class="point" onclick="movePic_L()"><</p></a></div>
+				<div><a href="#" onclick="return false"><p id="right" class="point" onclick="movePic_R()">></p></a></div>				
+			</div>
+		</div>
+	</div>
+	<div id="explain">
+		<p>三秒一换,鼠标停留在箭头,切换点,图片上时停止滚动.</p>
+	</div>
+
+
+<script type="text/javascript">
+	var indexM = 0; 
+	var dots = document.getElementsByClassName("dot");
+	var pic = document.getElementById("pic");
+	var autoChange = setInterval(function(){ 
+	    movePic_R();
+    },3000);
+    for(var i = 0; i <= dots.length-1; i++){
+		setEvent(dots[i]);
+    }
+    setEvent(pic);
+    setEvent(document.getElementById("left"));
+    setEvent(document.getElementById("right"));
+
+    //为元素绑定事件的方法.
+	function setEvent(theElement){
+		theElement.onmouseover = function(){
+    		clearInterval(autoChange);
+    	}
+    	theElement.onmouseout = function(){
+    		autoChange = setInterval(function(){ 
+	    		movePic_R();
+    		},3000);
+    	}
+	}
+
+	//点击切换点时的动作.
+	function dotCilck(posi){
+		indexM = posi*100;
+		pic.style.marginLeft = "-" + indexM + "%";
+		changeDot();
+	}
+
+	//向左偏移,左箭头的执行动作.
+	function movePic_R(){
+		if (indexM >= 400) {
+			indexM = 0;
+		}
+		else{
+			indexM += 100;
+		}
+		pic.style.marginLeft = "-" + indexM + "%";
+		changeDot();
+	}
+
+	//向右偏移,计时器与右箭头的执行动作.
+	function movePic_L(){
+		if (indexM <= 0) {
+			indexM = 400;
+		}
+		else{
+			indexM -= 100;
+		}
+		pic.style.marginLeft = "-" + indexM + "%";
+		changeDot();
+	}
+
+	//改变切换点的颜色.
+	function changeDot(){
+		for(var i = 0; i <= dots.length-1 ;i++){
+			dots[i].style.backgroundColor = "white";
+		}
+		dots[indexM/100].style.backgroundColor = "#454641";
+	}
+
+</script>	
+</body>
+</html>
